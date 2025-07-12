@@ -1,14 +1,24 @@
 <h2>Usuarios</h2>
 
-<form (ngSubmit)="guardar()">
+<!-- Formulario para crear nuevo usuario -->
+<form (ngSubmit)="guardar()" *ngIf="!usuarioEditando">
   <input [(ngModel)]="nuevo.nombre" name="nombre" placeholder="Nombre" required />
   <input [(ngModel)]="nuevo.email" name="email" placeholder="Email" required />
   <button type="submit">Guardar</button>
 </form>
 
+<!-- Formulario para editar usuario existente -->
+<form (ngSubmit)="actualizar()" *ngIf="usuarioEditando">
+  <input [(ngModel)]="usuarioEditando.nombre" name="nombreEditar" placeholder="Nombre" required />
+  <input [(ngModel)]="usuarioEditando.email" name="emailEditar" placeholder="Email" required />
+  <button type="submit">Actualizar</button>
+  <button type="button" (click)="cancelarEdicion()">Cancelar</button>
+</form>
+
 <ul>
   <li *ngFor="let u of usuarios">
     {{ u.nombre }} - {{ u.email }}
+    <button (click)="editar(u)">Editar</button>
     <button (click)="eliminar(u.id!)">Eliminar</button>
   </li>
 </ul>

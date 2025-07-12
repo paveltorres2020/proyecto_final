@@ -33,4 +33,25 @@ export class Usuarios {
   eliminar(id: number) {
     this.usuarioService.eliminarUsuario(id).subscribe(() => this.listar());
   }
+usuarioEditando: Usuario | null = null;
+
+editar(usuario: Usuario) {
+  this.usuarioEditando = { ...usuario };
 }
+
+cancelarEdicion() {
+  this.usuarioEditando = null;
+}
+
+actualizar() {
+  if (this.usuarioEditando && this.usuarioEditando.id) {
+    this.usuarioService.actualizarUsuario(this.usuarioEditando.id, this.usuarioEditando).subscribe(() => {
+      this.usuarioEditando = null;
+      this.listar();
+    });
+  }
+}
+
+}
+
+
