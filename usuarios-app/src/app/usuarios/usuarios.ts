@@ -51,6 +51,13 @@ actualizar() {
     });
   }
 }
+confirmarEliminar(usuario: Usuario) {
+  const confirmado = window.confirm(`¿Estás seguro que deseas eliminar a ${usuario.nombre}?`);
+  if (confirmado && usuario.id) {
+    this.eliminar(usuario.id);
+  }
+}
+
 
 }
 

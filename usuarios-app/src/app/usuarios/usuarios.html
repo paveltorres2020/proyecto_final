@@ -19,6 +19,8 @@
   <li *ngFor="let u of usuarios">
     {{ u.nombre }} - {{ u.email }}
     <button (click)="editar(u)">Editar</button>
-    <button (click)="eliminar(u.id!)">Eliminar</button>
+    <button (click)="confirmarEliminar(u)">Eliminar</button>
+
+
   </li>
 </ul>
