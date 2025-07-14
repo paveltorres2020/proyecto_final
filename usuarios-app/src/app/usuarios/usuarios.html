@@ -1,10 +1,27 @@
 <h2>Usuarios</h2>
 
 <!-- Formulario para crear nuevo usuario -->
-<form (ngSubmit)="guardar()" *ngIf="!usuarioEditando">
+ <form #f="ngForm" (ngSubmit)="guardar()" *ngIf="!usuarioEditando">
+<!-- <form (ngSubmit)="guardar()" *ngIf="!usuarioEditando"> -->
   <input [(ngModel)]="nuevo.nombre" name="nombre" placeholder="Nombre" required />
-  <input [(ngModel)]="nuevo.email" name="email" placeholder="Email" required />
-  <button type="submit">Guardar</button>
+  <!-- <input [(ngModel)]="nuevo.email" name="email" placeholder="Email" required /> -->
+   <input
+    type="email"
+    [(ngModel)]="nuevo.email"
+    name="email"
+    placeholder="Email"
+    required
+    email
+    #campoEmail="ngModel"
+  />
+  <div *ngIf="campoEmail.invalid && campoEmail.touched" style="color: tomato; font-size: .9em;">
+    <!-- <span *ngIf="campoEmail.errors?.['required']">El email es obligatorio.</span> -->
+    <span *ngIf="campoEmail.errors?.['email']">Email inválido.</span>
+  </div>
+  <button type="submit" [disabled]="!f.form.valid">
+    Guardar
+  </button>
+  <!-- <button type="submit">Guardar</button> -->
 </form>
 
 <!-- Formulario para editar usuario existente -->
