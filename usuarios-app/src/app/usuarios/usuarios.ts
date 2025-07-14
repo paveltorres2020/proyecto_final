@@ -7,7 +7,8 @@ import { UsuarioService, Usuario } from '../services/usuario';
   selector: 'app-usuarios',
   standalone: true,
   imports: [FormsModule, NgIf, NgFor],
-  templateUrl: './usuarios.html'
+  templateUrl: './usuarios.html',
+  styleUrl: './usuarios.css' 
 })
 export class Usuarios {
   usuarios: Usuario[] = [];

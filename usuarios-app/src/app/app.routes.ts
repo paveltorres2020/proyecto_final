@@ -1,4 +1,4 @@
-import { Routes } from '@angular/router';
+/* import { Routes } from '@angular/router';
 
 export const routes: Routes = [
   {
@@ -14,4 +14,14 @@ export const routes: Routes = [
     redirectTo: 'usuarios',
     pathMatch: 'full'
   }
+];
+ */
+import { Routes } from '@angular/router';
+import { Usuarios } from './usuarios/usuarios';
+import { AcercaDe } from './acerca-de/acerca-de';
+
+export const routes: Routes = [
+  { path: 'usuarios', component: Usuarios },
+  { path: 'acerca-de', component: AcercaDe },
+  { path: '', redirectTo: 'usuarios', pathMatch: 'full' }, // Redirección por defecto
 ];
